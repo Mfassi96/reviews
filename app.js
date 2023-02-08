@@ -44,13 +44,13 @@ let currentItem=0
 //cargar el item inicial 
 
 window.addEventListener('DOMContentLoaded',function(){
-  showPerson(currentItem)
+  showPerson()
 })
 
 //Mostrar persona segun el item
 
-function showPerson(person){
-  const item=reviews[person]
+function showPerson(){
+  const item=reviews[currentItem]
   img.src=item.img
   author.textContent=item.name
   job.textContent=item.job
@@ -65,7 +65,7 @@ nextBtn.addEventListener('click',()=>{
   if(currentItem > reviews.length -1){
     currentItem=0
   }
-  showPerson(currentItem)
+  showPerson()
 })
 
 //mostrar la persona anterior
@@ -78,8 +78,12 @@ prevBtn.addEventListener('click',()=>{
   showPerson(currentItem)
 })
 
+//mostrar una persona aleatoria
 
-
+randomBtn.addEventListener('click',()=> {
+  currentItem= Math.floor(Math.random() * reviews.length);
+  showPerson()
+})
 
 
 
