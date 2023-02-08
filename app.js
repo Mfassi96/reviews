@@ -38,28 +38,45 @@ const prevBtn=document.querySelector('.prev-btn')
 const nextBtn=document.querySelector('.next-btn')
 const randomBtn=document.querySelector('.random-btn')
 
-//Set item
+//Establece item inicial
 let currentItem=0
 
 //cargar el item inicial 
 
 window.addEventListener('DOMContentLoaded',function(){
-  const item=reviews[currentItem]
+  showPerson(currentItem)
+})
+
+//Mostrar persona segun el item
+
+function showPerson(person){
+  const item=reviews[person]
   img.src=item.img
   author.textContent=item.name
   job.textContent=item.job
   info.textContent=item.text
+}
 
+
+//mostrar la siguiente persona
+
+nextBtn.addEventListener('click',()=>{
+  currentItem++
+  if(currentItem > reviews.length -1){
+    currentItem=0
+  }
+  showPerson(currentItem)
 })
 
+//mostrar la persona anterior
 
-
-
-
-
-
-
-
+prevBtn.addEventListener('click',()=>{
+  currentItem--
+  if(currentItem < 0){
+    currentItem=reviews.length-1
+  }
+  showPerson(currentItem)
+})
 
 
 
